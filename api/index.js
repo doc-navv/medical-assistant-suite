@@ -107,45 +107,51 @@ const TOOL_CONFIGURATIONS = {
     model: 'gpt-4o-mini',
     temperature: 0.3,
     maxTokens: 4000,
-    promptTemplate: `Act as an experienced Australian General Practitioner creating a GP Mental Health Treatment Plan under the current MBS guidelines (effective from July 1, 2025).
+    promptTemplate: `Act as an experienced Australian General Practitioner creating a GP Mental Health Treatment Plan under the current MBS guidelines and RACGP (effective from July 1, 2025).
 
-Generate the response in this EXACT format:
+ Please create a concise, evidence-based Mental Health Treatment Plan aligned with RACGP, eTG, and PBS standards, using the structure below. Keep the content to the point and clinically relevant for use in practice.
 
-<div style="font-family: Arial, sans-serif; max-width: 100%; padding: 20px;">
+Format to follow:
 
-<h2 style="text-align: center; color: #2c3e50; margin-bottom: 5px;">GP Mental Health Treatment Plan – {DATE}</h2>
+Presenting Complaint/Problem:
 
-<p style="text-align: center; color: #7f8c8d; margin-bottom: 30px; font-size: 14px;">Generated under MBS Guidelines effective July 1, 2025</p>
+Mental Health History/Previous Treatment:
 
-<h3 style="color: #2980b9; margin-bottom: 15px;">📋 Patient Assessment & Diagnosis</h3>
+Family History of Mental Illness:
 
-<table style="width: 100%; border-collapse: collapse; border: 2px solid #34495e; margin-bottom: 30px;">
-<tr style="background-color: #ecf0f1;">
-<td style="border: 1px solid #bdc3c7; padding: 12px; font-weight: bold;">Mental Health Condition</td>
-<td style="border: 1px solid #bdc3c7; padding: 12px; font-weight: bold;">Severity & Risk Assessment</td>
-<td style="border: 1px solid #bdc3c7; padding: 12px; font-weight: bold;">Contributing Factors</td>
-</tr>
-<tr>
-<td style="border: 1px solid #bdc3c7; padding: 10px; vertical-align: top;">[Primary mental health diagnosis based on provided condition]</td>
-<td style="border: 1px solid #bdc3c7; padding: 10px; vertical-align: top;">[Severity level and risk factors assessment]</td>
-<td style="border: 1px solid #bdc3c7; padding: 10px; vertical-align: top;">[Biological, psychological, social factors from provided information]</td>
-</tr>
-</table>
+Social History:
 
-<h3 style="color: #2980b9; margin-bottom: 15px;">📋 Treatment Goals & Interventions</h3>
+Relevant Medical Conditions/Investigations/Allergies:
 
-<table style="width: 100%; border-collapse: collapse; border: 2px solid #34495e; margin-bottom: 30px;">
-<tr style="background-color: #ecf0f1;">
-<td style="border: 1px solid #bdc3c7; padding: 12px; font-weight: bold;">Treatment Goals</td>
-<td style="border: 1px solid #bdc3c7; padding: 12px; font-weight: bold;">Interventions & Strategies</td>
-<td style="border: 1px solid #bdc3c7; padding: 12px; font-weight: bold;">Review & Monitoring</td>
-</tr>
-<tr>
-<td style="border: 1px solid #bdc3c7; padding: 10px; vertical-align: top;">[SMART mental health goals based on provided goals]</td>
-<td style="border: 1px solid #bdc3c7; padding: 10px; vertical-align: top;">[GP interventions, referrals, medication considerations based on current medications]</td>
-<td style="border: 1px solid #bdc3c7; padding: 10px; vertical-align: top;">[Follow-up schedule, outcome measures, monitoring plan]</td>
-</tr>
-</table>
+Current Medications:
+
+Mental State Examination:
+
+Appearance & Behaviour:
+
+Mood and affect:
+
+Speech:
+
+Insight & Judgement:
+
+Cognition:
+
+Thought form:
+
+Thought function:
+
+Risk: low
+
+Outcome Tool/Result: DASS21 Assessment / K10
+
+Risk & Co-morbidity Assessment:
+
+Diagnosis/Provisional Diagnosis:
+
+Patient Goals:
+
+Patient Actions & Treatment: engage in psychotherapy
 
 </div>
 
