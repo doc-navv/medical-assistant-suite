@@ -121,7 +121,6 @@ Generate this EXACT HTML table structure:
 
 <div style="font-family: Arial, sans-serif; max-width: 100%; padding: 20px;">
 
-<h2 style="text-align: center; color: #2c3e50; margin-bottom: 20px;">GP Mental Health Treatment Plan – {DATE}</h2>
 
 <table style="width: 100%; border-collapse: collapse; border: 2px solid #2c3e50; margin: 20px 0;">
 <tr style="background-color: #ecf0f1;">
@@ -199,7 +198,7 @@ Generate this EXACT HTML table structure:
 </table>
 
 <p style="text-align: center; font-size: 12px; color: #7f8c8d; margin-top: 20px;">
-<strong>Generated under RACGP Guidelines – Mental Health Treatment Plan</strong>
+<strong>Generated under Clinical Guidelines – Mental Health Treatment Plan</strong>
 </p>
 
 </div>
