@@ -107,60 +107,44 @@ const TOOL_CONFIGURATIONS = {
     model: 'gpt-4o-mini',
     temperature: 0.3,
     maxTokens: 4000,
-    promptTemplate: `I am an Australian GP and RACGP trainee. Please generate a Mental Health Treatment Plan according to RACGP, eTG, and PBS standards. Keep the output concise, clinically relevant, and structured exactly as below. Use bolded headings for each section.
+    promptTemplate: `I am an Australian GP and RACGP trainee. Please generate a concise, evidence-based Mental Health Treatment Plan aligned with RACGP, eTG, and PBS standards.
 
-Output format:
+Output instructions:
 
-Presenting Complaint/Problem:
-[text]
+The response must be formatted as a two-column table.
 
-Mental Health History/Previous Treatment:
-[text]
+The first column contains the section headings in bold.
 
-Family History of Mental Illness:
-[text]
+The second column contains the concise clinical content.
 
-Social History:
-[text]
+Use short, professional, guideline-aligned language.
 
-Relevant Medical Conditions/Investigations/Allergies:
-[text]
+Where relevant, include subheadings (e.g. MSE domains) on separate lines within the same cell.
 
-Current Medications:
-[text]
+Keep information practical and to the point for GP use.
 
-Mental State Examination:
+Table structure to follow:
 
-Appearance & Behaviour: [text]
-
-Mood and Affect: [text]
-
-Speech: [text]
-
-Insight & Judgement: [text]
-
-Cognition: [text]
-
-Thought Form: [text]
-
-Thought Function: [text]
-
-Risk: low
-
-Outcome Tool/Result:
-DASS21 Assessment / K10
-
-Risk & Co-morbidity Assessment:
-[text]
-
-Diagnosis/Provisional Diagnosis:
-[text]
-
-Patient Goals:
-[text]
-
-Patient Actions & Treatment:
-
+Section	Details
+Presenting Complaint/Problem	[Enter key presenting issue]
+Mental Health History/Previous Treatment	[Enter relevant history and prior therapies/medications]
+Family History of Mental Illness	[Summarise family psychiatric history]
+Social History	[Brief social supports, housing, occupation, stressors]
+Relevant Medical Conditions/Investigations/Allergies	[Summarise key medical conditions, investigations, allergies]
+Current Medications	[List psychiatric and non-psychiatric meds]
+Mental State Examination	Appearance & Behaviour: …
+Mood and Affect: …
+Speech: …
+Insight & Judgement: …
+Cognition: …
+Thought Form: …
+Thought Function: …
+Risk: Low
+Outcome Tool/Result	DASS21 Assessment / K10
+Risk & Co-morbidity Assessment	[Identify risk factors, comorbidities]
+Diagnosis/Provisional Diagnosis	[State working diagnosis]
+Patient Goals	[Summarise patient-identified goals]
+Patient Actions & Treatment	Engage in psychotherapy [add meds/other as needed]
 Patient Information: {INPUT_DATA}`
   },
 
