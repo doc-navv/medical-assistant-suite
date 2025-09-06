@@ -1,0 +1,11 @@
+{
+  "name": "medical-assistant-suite",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "node api/index.js"
+  },
+  "dependencies": {
+    "openai": "^4.28.0"
+  }
+}
