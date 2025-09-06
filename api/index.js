@@ -101,52 +101,121 @@ export default async function handler(req, res) {
 const TOOL_CONFIGURATIONS = {
   
   // 1. MENTAL HEALTH CARE PLAN
-  'mental-health': {
-    name: 'Mental Health Care Plan Generator',
-    description: 'Generate GP Mental Health Treatment Plans according to Australian MBS guidelines',
-    model: 'gpt-4o-mini',
-    temperature: 0.3,
-    maxTokens: 4000,
-    promptTemplate: `I am an Australian GP and RACGP trainee. Please generate a concise, evidence-based Mental Health Treatment Plan aligned with RACGP, eTG, and PBS standards.
+ 'mental-health': {
+  name: 'Mental Health Treatment Plan Generator',
+  description: 'Generate GP Mental Health Treatment Plans according to Australian RACGP guidelines',
+  model: 'gpt-4o-mini',
+  temperature: 0.3,
+  maxTokens: 4000,
+  promptTemplate: `I am an Australian GP and RACGP trainee. Please generate a concise, evidence-based Mental Health Treatment Plan aligned with RACGP, eTG, and PBS standards.
 
-Output instructions:
+CRITICAL OUTPUT FORMATTING REQUIREMENTS:
+- Generate response as a professional HTML table that can be directly copied into care plan templates
+- First column: Section headings in BOLD
+- Second column: Concise clinical content
+- Use short, professional, guideline-aligned language
+- Include MSE subheadings on separate lines within the same cell
+- Keep information practical and to the point for GP use
 
-The response must be formatted as a two-column table.
+Generate this EXACT HTML table structure:
 
-The first column contains the section headings in bold.
+<div style="font-family: Arial, sans-serif; max-width: 100%; padding: 20px;">
 
-The second column contains the concise clinical content.
+<h2 style="text-align: center; color: #2c3e50; margin-bottom: 20px;">GP Mental Health Treatment Plan – {DATE}</h2>
 
-Use short, professional, guideline-aligned language.
+<table style="width: 100%; border-collapse: collapse; border: 2px solid #2c3e50; margin: 20px 0;">
+<tr style="background-color: #ecf0f1;">
+<th style="border: 1px solid #bdc3c7; padding: 15px; text-align: left; font-weight: bold; width: 35%;">Section</th>
+<th style="border: 1px solid #bdc3c7; padding: 15px; text-align: left; font-weight: bold; width: 65%;">Details</th>
+</tr>
 
-Where relevant, include subheadings (e.g. MSE domains) on separate lines within the same cell.
+<tr>
+<td style="border: 1px solid #bdc3c7; padding: 12px; vertical-align: top;"><strong>Presenting Complaint/Problem</strong></td>
+<td style="border: 1px solid #bdc3c7; padding: 12px; vertical-align: top;">[Generate key presenting issue based on provided condition]</td>
+</tr>
 
-Keep information practical and to the point for GP use.
+<tr>
+<td style="border: 1px solid #bdc3c7; padding: 12px; vertical-align: top;"><strong>Mental Health History/Previous Treatment</strong></td>
+<td style="border: 1px solid #bdc3c7; padding: 12px; vertical-align: top;">[Generate relevant history and prior therapies/medications based on provided information]</td>
+</tr>
 
-Table structure to follow:
+<tr>
+<td style="border: 1px solid #bdc3c7; padding: 12px; vertical-align: top;"><strong>Family History of Mental Illness</strong></td>
+<td style="border: 1px solid #bdc3c7; padding: 12px; vertical-align: top;">[Generate appropriate family psychiatric history or "Not disclosed/No known family history"]</td>
+</tr>
 
-Section	Details
-Presenting Complaint/Problem	[Enter key presenting issue]
-Mental Health History/Previous Treatment	[Enter relevant history and prior therapies/medications]
-Family History of Mental Illness	[Summarise family psychiatric history]
-Social History	[Brief social supports, housing, occupation, stressors]
-Relevant Medical Conditions/Investigations/Allergies	[Summarise key medical conditions, investigations, allergies]
-Current Medications	[List psychiatric and non-psychiatric meds]
-Mental State Examination	Appearance & Behaviour: …
-Mood and Affect: …
-Speech: …
-Insight & Judgement: …
-Cognition: …
-Thought Form: …
-Thought Function: …
-Risk: Low
-Outcome Tool/Result	DASS21 Assessment / K10
-Risk & Co-morbidity Assessment	[Identify risk factors, comorbidities]
-Diagnosis/Provisional Diagnosis	[State working diagnosis]
-Patient Goals	[Summarise patient-identified goals]
-Patient Actions & Treatment	Engage in psychotherapy [add meds/other as needed]
-Patient Information: {INPUT_DATA}`
-  },
+<tr>
+<td style="border: 1px solid #bdc3c7; padding: 12px; vertical-align: top;"><strong>Social History</strong></td>
+<td style="border: 1px solid #bdc3c7; padding: 12px; vertical-align: top;">[Generate brief social supports, housing, occupation, stressors based on psychosocial factors provided]</td>
+</tr>
+
+<tr>
+<td style="border: 1px solid #bdc3c7; padding: 12px; vertical-align: top;"><strong>Relevant Medical Conditions/Investigations/Allergies</strong></td>
+<td style="border: 1px solid #bdc3c7; padding: 12px; vertical-align: top;">[Generate key medical conditions, investigations, allergies - use "NKDA" if not specified]</td>
+</tr>
+
+<tr>
+<td style="border: 1px solid #bdc3c7; padding: 12px; vertical-align: top;"><strong>Current Medications</strong></td>
+<td style="border: 1px solid #bdc3c7; padding: 12px; vertical-align: top;">[List current medications provided, or "No current medications" if none specified]</td>
+</tr>
+
+<tr>
+<td style="border: 1px solid #bdc3c7; padding: 12px; vertical-align: top;"><strong>Mental State Examination</strong></td>
+<td style="border: 1px solid #bdc3c7; padding: 12px; vertical-align: top;"><strong>Appearance & Behaviour:</strong> [Generate appropriate MSE findings]<br>
+<strong>Mood and Affect:</strong> [Generate appropriate findings]<br>
+<strong>Speech:</strong> [Generate appropriate findings]<br>
+<strong>Insight & Judgement:</strong> [Generate appropriate findings]<br>
+<strong>Cognition:</strong> [Generate appropriate findings]<br>
+<strong>Thought Form:</strong> [Generate appropriate findings]<br>
+<strong>Thought Function:</strong> [Generate appropriate findings]<br>
+<strong>Risk:</strong> Low (unless specific risk factors identified)</td>
+</tr>
+
+<tr>
+<td style="border: 1px solid #bdc3c7; padding: 12px; vertical-align: top;"><strong>Outcome Tool/Result</strong></td>
+<td style="border: 1px solid #bdc3c7; padding: 12px; vertical-align: top;">DASS21 Assessment / K10 [Generate appropriate severity level based on condition]</td>
+</tr>
+
+<tr>
+<td style="border: 1px solid #bdc3c7; padding: 12px; vertical-align: top;"><strong>Risk & Co-morbidity Assessment</strong></td>
+<td style="border: 1px solid #bdc3c7; padding: 12px; vertical-align: top;">[Generate risk factors and comorbidities based on provided information]</td>
+</tr>
+
+<tr>
+<td style="border: 1px solid #bdc3c7; padding: 12px; vertical-align: top;"><strong>Diagnosis/Provisional Diagnosis</strong></td>
+<td style="border: 1px solid #bdc3c7; padding: 12px; vertical-align: top;">[State appropriate ICD-11 or DSM-5 diagnosis based on provided condition]</td>
+</tr>
+
+<tr>
+<td style="border: 1px solid #bdc3c7; padding: 12px; vertical-align: top;"><strong>Patient Goals</strong></td>
+<td style="border: 1px solid #bdc3c7; padding: 12px; vertical-align: top;">[Use provided treatment goals or generate SMART goals if not specified]</td>
+</tr>
+
+<tr>
+<td style="border: 1px solid #bdc3c7; padding: 12px; vertical-align: top;"><strong>Patient Actions & Treatment</strong></td>
+<td style="border: 1px solid #bdc3c7; padding: 12px; vertical-align: top;">Engage in psychotherapy [Add evidence-based medications, referrals, and other interventions as clinically appropriate based on RACGP guidelines]</td>
+</tr>
+
+</table>
+
+<p style="text-align: center; font-size: 12px; color: #7f8c8d; margin-top: 20px;">
+<strong>Generated under RACGP Guidelines – Mental Health Treatment Plan</strong>
+</p>
+
+</div>
+
+CLINICAL REQUIREMENTS:
+- Base all content on provided patient information: {INPUT_DATA}
+- Use RACGP-aligned terminology and evidence-based practices
+- Include PBS-listed medications where appropriate
+- Maintain professional GP documentation standards
+- Generate realistic, clinically appropriate content for each section
+- Use "Not specified" or appropriate clinical defaults where information is not provided
+
+Patient Information to incorporate: {INPUT_DATA}`
+},
+
+
 
   // 2. DEXA SCAN INTERPRETER
   'dexa-interpreter': {
