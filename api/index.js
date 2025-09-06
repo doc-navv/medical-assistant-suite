@@ -107,53 +107,59 @@ const TOOL_CONFIGURATIONS = {
     model: 'gpt-4o-mini',
     temperature: 0.3,
     maxTokens: 4000,
-    promptTemplate: `Act as an experienced Australian General Practitioner creating a GP Mental Health Treatment Plan under the current MBS guidelines and RACGP (effective from July 1, 2025).
+    promptTemplate: `I am an Australian GP and RACGP trainee. Please generate a Mental Health Treatment Plan according to RACGP, eTG, and PBS standards. Keep the output concise, clinically relevant, and structured exactly as below. Use bolded headings for each section.
 
- Please create a concise, evidence-based Mental Health Treatment Plan aligned with RACGP, eTG, and PBS standards, using the structure below. Keep the content to the point and clinically relevant for use in practice.
-
-Format to follow:
+Output format:
 
 Presenting Complaint/Problem:
+[text]
 
 Mental Health History/Previous Treatment:
+[text]
 
 Family History of Mental Illness:
+[text]
 
 Social History:
+[text]
 
 Relevant Medical Conditions/Investigations/Allergies:
+[text]
 
 Current Medications:
+[text]
 
 Mental State Examination:
 
-Appearance & Behaviour:
+Appearance & Behaviour: [text]
 
-Mood and affect:
+Mood and Affect: [text]
 
-Speech:
+Speech: [text]
 
-Insight & Judgement:
+Insight & Judgement: [text]
 
-Cognition:
+Cognition: [text]
 
-Thought form:
+Thought Form: [text]
 
-Thought function:
+Thought Function: [text]
 
 Risk: low
 
-Outcome Tool/Result: DASS21 Assessment / K10
+Outcome Tool/Result:
+DASS21 Assessment / K10
 
 Risk & Co-morbidity Assessment:
+[text]
 
 Diagnosis/Provisional Diagnosis:
+[text]
 
 Patient Goals:
+[text]
 
-Patient Actions & Treatment: engage in psychotherapy
-
-</div>
+Patient Actions & Treatment:
 
 Patient Information: {INPUT_DATA}`
   },
