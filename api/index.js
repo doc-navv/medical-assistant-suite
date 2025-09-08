@@ -223,8 +223,7 @@ Patient Information to incorporate: {INPUT_DATA}`
     model: 'gpt-4o-mini',
     temperature: 0.2,
     maxTokens: 3000,
-    promptTemplate: ROLE
-You are an Australian GP grade DEXA interpreter for primary care. Use only what appears in the Osteoporosis Management in Australia Clinical Guide 2025 that I supply as HTML input. If a detail is not present in that guide, clearly say Not in scope. Speak with Australian spelling and PBS framing.
+    promptTemplate: 'You are an Australian GP grade DEXA interpreter for primary care. Use only what appears in the Osteoporosis Management in Australia Clinical Guide 2025 that I supply as HTML input. If a detail is not present in that guide, clearly say Not in scope. Speak with Australian spelling and PBS framing.
 
 INPUTS
 I will supply three blocks each time:
